@@ -1,0 +1,134 @@
+{
+  "run_metadata": {
+    "random_seed": 42,
+    "n_rows": 284807,
+    "n_threads": 1
+  },
+  "dataset": {
+    "rows": 284807,
+    "columns": 32,
+    "duplicates": {
+      "n_duplicate_rows": 1081,
+      "duplicates_by_class": {
+        "0": 1822,
+        "1": 32
+      }
+    },
+    "fraud_count": 492,
+    "fraud_rate": 0.001727485630620034
+  },
+  "imbalance_comparison": {
+    "class_weighting": {
+      "mean_pr_auc": 0.8326799369838532,
+      "std_pr_auc": 0.0277526488733523
+    },
+    "threshold_moving": {
+      "mean_pr_auc": 0.8448213812006662,
+      "std_pr_auc": 0.02179241104041662
+    },
+    "resampling_smote": {
+      "mean_pr_auc": 0.8294355819619776,
+      "std_pr_auc": 0.02683132062996801
+    }
+  },
+  "imbalance_winner": "threshold_moving",
+  "stage_a": [
+    {
+      "model": "CatBoost",
+      "val_pr_auc": 0.8712885199163057
+    },
+    {
+      "model": "RandomForest",
+      "val_pr_auc": 0.8701398547799496
+    },
+    {
+      "model": "RandomForest_Balanced",
+      "val_pr_auc": 0.8272676620161743
+    },
+    {
+      "model": "XGBoost",
+      "val_pr_auc": 0.7894425223845876
+    },
+    {
+      "model": "LightGBM",
+      "val_pr_auc": 0.3583608068137317
+    }
+  ],
+  "stage_b": {
+    "CatBoost": {
+      "mean_pr_auc": 0.8481828458608925,
+      "fold_pr_auc": [
+        0.8350811830614073,
+        0.8821589491781394,
+        0.8499990353458003,
+        0.8322465685582939,
+        0.8414284931608216
+      ],
+      "bootstrap_ci": [
+        0.8161987442387733,
+        0.8783773017948813
+      ]
+    },
+    "RandomForest": {
+      "mean_pr_auc": 0.8448213812006662,
+      "fold_pr_auc": [
+        0.8249657005029984,
+        0.8747107001532761,
+        0.8625287826242566,
+        0.8448898667949781,
+        0.8170118559278217
+      ],
+      "bootstrap_ci": [
+        0.8149516458536813,
+        0.8738597283070101
+      ]
+    }
+  },
+  "champion_name": "CatBoost",
+  "runner_up_name": "RandomForest",
+  "temporal_pr_auc": 0.7691969987866822,
+  "threshold_result": {
+    "threshold": 0.04430724903309097,
+    "total_cost": 65713.59124000002,
+    "fn_cost": 61408.720800000025,
+    "fp_cost": 4304.870439999996
+  },
+  "real_precision": 0.6963979416809606,
+  "real_recall": 0.8252032520325203,
+  "benchmark_check": {
+    "your_precision": 0.6963979416809606,
+    "reference_precision": 0.9333,
+    "precision_gap": -0.23690205831903943,
+    "your_recall": 0.8252032520325203,
+    "reference_recall": 0.7467,
+    "recall_gap": 0.07850325203252029,
+    "investigate_flag": true,
+    "note": "Large positive gaps may indicate leakage; large negative gaps may indicate a bug \u2014 investigate before trusting either."
+  },
+  "confusion_matrix": [
+    [
+      284138,
+      177
+    ],
+    [
+      86,
+      406
+    ]
+  ],
+  "financial_impact": [
+    {
+      "Scenario": "No model (flag nothing)",
+      "Total Cost (EUR)": 265164.34770000004
+    },
+    {
+      "Scenario": "Naive 0.5 threshold",
+      "Total Cost (EUR)": 73126.85946
+    },
+    {
+      "Scenario": "Cost-optimal threshold (0.0443)",
+      "Total Cost (EUR)": 65713.59124000002
+    }
+  ],
+  "savings_vs_no_model": 199450.75646,
+  "savings_vs_naive_05": 7413.268219999984
+}

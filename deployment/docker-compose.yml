@@ -1,0 +1,25 @@
+# Real, runnable docker-compose for local/staging deployment of the scoring
+# API. Mount your REAL trained model file at ./model/champion_model.pkl
+# before running `docker compose up`. Master Playbook Section 17.4.
+
+services:
+  fraud-scoring-api:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - MODEL_PATH=/app/model/champion_model.pkl
+      - MODEL_VERSION=v1.0.0  # set this to your real semantic version (Section 17.3)
+      - DECISION_THRESHOLD=0.5  # set this to your real cost-optimal threshold (Section 6/10)
+    volumes:
+      - ./model:/app/model:ro   # read-only mount: the API can score, it cannot write to the model
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request,sys; sys.exit(0 if urllib.request.urlopen('http://localhost:8000/health').status==200 else 1)"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: "0.92"   # WARP standard: never claim 100% of a host's CPU
