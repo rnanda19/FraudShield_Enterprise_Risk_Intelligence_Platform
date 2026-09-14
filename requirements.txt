@@ -1,7 +1,7 @@
 # Pinned to the exact versions this project's real notebook run was verified against
 # (2026-09-13). Loosen with care — CatBoost/XGBoost/LightGBM PR-AUC results in this
 # repo's reports/ are tied to these versions and RANDOM_SEED=42.
-pandas==3.0.2
+pandas==3.0.5
 numpy==2.4.4
 scikit-learn==1.8.0
 xgboost==3.2.0
