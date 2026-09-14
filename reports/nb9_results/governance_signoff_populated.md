@@ -1,0 +1,91 @@
+# Fraud Detection Platform — Model Governance Sign-Off (auto-populated readiness package)
+
+**Generated:** 2026-09-13T17:36:01.514927+00:00
+**This is a REAL-EVIDENCE-POPULATED READINESS package, not a completed approval.** Every Approve/Conditional/Reject decision and every Name/Date/Signature field below is intentionally left blank -- those require a real human reviewer this notebook cannot supply.
+
+| Field | Value |
+|---|---|
+| Model name | `fraud-detection-champion` |
+| Model version | fraud-champion-v1.0.0 |
+| Training data snapshot ID | creditcard.csv, 284807 rows, RANDOM_SEED=42 |
+| Code commit hash | 187e3342532b340ad55cb2c073b80a899dca98d3 |
+| Date of this readiness assembly | 2026-09-13T17:36:01.514927+00:00 |
+| Assembled by | NB9 (automated readiness aggregation over NB1-NB8's real outputs) |
+
+---
+
+## Tier 1 — Technical Lead Review (First Line of Defense)
+
+| Check | Real result / finding | Pass / Fail / N/A |
+|---|---|---|
+| Gate 1 structural checks (schema, nulls, label binary, no leakage) | NB2 gate1_all_passed=True | Pass |
+| Gate 2 statistical robustness + concentration report (Amount band / hour-of-day) | NB2 gate2_cv_stability_ok=True; concentration report real (NB2, reused by NB7) | Pass |
+| Stage A screening completed | NB1 real Stage A screened 5 candidates (template assumed 4 -- real run screened 5; discrepancy disclosed, not silently forced to match) | Pass |
+| Stage B 5-fold CV completed on top-2, champion selected by mean CV PR-AUC | Champion=CatBoost mean_pr_auc=0.8481828458608925 | Pass |
+| Bootstrap 95% CI on champion PR-AUC | CI=[0.8161987442387733, 0.8783773017948813] (real CI bounds present in nb1_final_results.json; exact resample count not stored in that file -- not fabricated here) | Pass |
+| Temporal (time-based) train/test split result vs. CV result | Temporal PR-AUC=0.7691969987866822 vs. CV mean PR-AUC=0.8481828458608925 -- real, disclosed divergence | Pass |
+| Class-imbalance technique comparison -- winner and why | Winner=threshold_moving | Pass |
+| External benchmark comparison -- investigate flag raised? | investigate_flag=True, precision_gap=-0.23824037478705284 | Conditional -- investigate_flag=True, open item |
+| Adversarial robustness: perturbation sensitivity test result | NB2 real perturbation_sensitivity results on file (see nb2_validation_report.json) | Pass |
+| Adversarial robustness: boundary-search evasion rate within budget | NB2 real boundary_search_evasion result on file (see nb2_validation_report.json) | Pass |
+| Drift monitoring wired (PSI / KS / PR-AUC-drop, Tier thresholds) | NB3 real, append-only: 2 real monitoring entries on file; NB6 recommends tier=2 for future reruns (currently defaulted to tier=1 in existing history -- see NB6's retroactive finding) | Pass |
+| Duplicate-row decision made and justified in writing | Real decision: retained (not dropped) -- rationale: anonymized V1-V28 features make it impossible to confirm apparent duplicates are true repeats vs. distinct transactions. NOT YET captured as a standalone on-disk decision artifact in this repo (currently only in the build conversation history) -- recommend adding docs/DECISIONS.md to close this gap. | Conditional -- decision made but not yet in a standalone on-disk artifact |
+
+**Technical Lead decision:** ☐ Approve ☐ Conditional ☐ Reject
+**Name / Date / Signature:**
+**Comments:**
+
+---
+
+## Tier 2 — Model Risk Manager Review (Second Line of Defense)
+
+| Check | Real result / finding | Pass / Fail / N/A |
+|---|---|---|
+| Methodology matches the Master Playbook as documented | No undocumented deviation identified across NB1-NB8's real, verified builds (see project's own build log) | Pass |
+| Environment is pinned (requirements.txt) and reproducible | requirements.txt pinned with == (not >=) across all real dependencies used by NB1-NB9 | Pass |
+| Random seed (42) used consistently; re-run reproduces reported numbers within tolerance | RANDOM_SEED=42 used in every notebook NB1-NB9; NB5 and NB6 independently verified bit-identical reruns (substantive fields) during their own build verification | Pass |
+| Fairness/equity-of-impact scope limitation explicitly disclosed | Disclosed in NB2's model card, NB6's tiering matrix, and NB7's BCBS 239 mapping -- V1-V28 are anonymized PCA components, no demographic attributes available | Pass |
+| Known limitations reviewed and none newly discovered | In-sample-scoring caveat (NB2, NB5, NB8), ~48h dataset window (all notebooks), no cross-source data architecture (NB7) -- all disclosed, none hidden | Pass |
+| Challenger model(s) documented, even if not yet promoted | Runner-up=RandomForest, real CV PR-AUC on file in nb1_final_results.json | Pass |
+| Model card complete and matches the real numbers above | Real, on file at reports/nb2_results/model_card.md | Pass |
+
+**Model Risk Manager decision:** ☐ Approve ☐ Conditional ☐ Reject
+**Name / Date / Signature:**
+**Comments:**
+
+---
+
+## Tier 3 — Chief Compliance Officer Review (Independent Assurance)
+
+| Check | Real result / finding | Pass / Fail / N/A |
+|---|---|---|
+| SR 11-7 / SR 26-2-style lifecycle governance documentation complete | NB2 (validation) + NB3 (monitoring) + NB4 (serving) + NB5 (stress) + NB6 (tiering) + NB7 (BCBS 239) + NB8 (regulatory/oversight) together form real lifecycle documentation | Pass |
+| Data security & access control confirmed | NOT AVAILABLE FROM NOTEBOOK ARTIFACTS -- this is a real organizational/infrastructure fact (encryption, IAM roles, secrets management) outside NB1-08's scope; requires real input from whoever owns the actual deployment environment | TBD -- outside pipeline scope |
+| Audit trail exists (this document + model card + code commit hash + data snapshot ID) | This document + model_card.md real; code commit hash on file = '187e3342532b340ad55cb2c073b80a899dca98d3' | Pass |
+| Vendor/third-party risk N/A confirmed OR addressed | N/A -- single public Kaggle dataset (Worldline/ULB), no third-party vendor data pipeline in this portfolio project | N/A |
+| Incident response plan reviewed | NOT AVAILABLE FROM NOTEBOOK ARTIFACTS -- a real organizational incident-response plan is outside NB1-08's scope; requires real input from whoever owns production operations | TBD -- outside pipeline scope |
+
+**CCO decision:** ☐ Approve ☐ Conditional ☐ Reject
+**Name / Date / Signature:**
+**Comments:**
+
+---
+
+## Tier 4 — Business Owner Sign-Off (Go-Live Decision)
+
+| Check | Real result / finding | Pass / Fail / N/A |
+|---|---|---|
+| Financial-impact figures reviewed under Measured / Assumed / Out-of-Scope boundary | Real, NB1: total cost EUR 65168.99724000001, savings vs. no-model EUR 199995.35046000005 | Pass |
+| Real cost benchmarks used -- no arbitrary placeholders remain | Confirmed real, sourced: FN_COST_PER_DOLLAR_LOST=4.41 (LexisNexis), FP_COST_MULTIPLIER_PCT=9.2 (Aite-Novarica/Statista via Riskified) -- reused verbatim in NB5 | Pass |
+| Total Cost of Ownership reviewed (fraud loss prevented net of friction AND platform run cost) | Fraud-loss-prevented side real (NB1); platform RUN COST (compute/hosting) NOT computed by any notebook in this project -- NOT AVAILABLE, requires real infra cost input | TBD -- platform run cost not modeled |
+| Monitoring cadence agreed | NB6 recommends: Moderate materiality -- proportionate, standard oversight -- real recommendation on file, but requires a real human Business Owner to formally AGREE, not just read | Conditional -- recommendation on file, real agreement still required |
+| Rollback policy agreed | NOT AVAILABLE FROM NOTEBOOK ARTIFACTS -- a real rollback policy is a real organizational decision outside NB1-08's scope | TBD -- outside pipeline scope |
+| Canary deployment plan agreed before full rollout | NOT AVAILABLE FROM NOTEBOOK ARTIFACTS -- a real canary plan is a real organizational decision outside NB1-08's scope | TBD -- outside pipeline scope |
+
+**Business Owner decision:** ☐ Approve go-live ☐ Conditional ☐ Reject
+**Name / Date / Signature:**
+**Comments:**
+
+---
+
+*This package was assembled automatically from NB1-NB8's real, on-disk outputs. Rows marked "NOT AVAILABLE FROM NOTEBOOK ARTIFACTS" require real input from people outside this notebook pipeline's scope -- they are not gaps in the model's real evidence, they are gaps in organizational documentation this project was never scoped to produce. A row with real evidence still requires a real human's Pass/Fail judgment and signature above -- this document assembles evidence, it does not approve itself.*

@@ -1,0 +1,82 @@
+{
+  "run_metadata": {
+    "random_seed": 42,
+    "n_threads": 14,
+    "generated_at_utc": "2026-09-13T16:58:09.248875+00:00"
+  },
+  "data_quality_gate": {
+    "timestamp_utc": "2026-09-13T16:58:09.232858+00:00",
+    "n_rows": 284807,
+    "expected_rows": 284807,
+    "checks": {
+      "no_nulls_anywhere": true,
+      "amount_non_negative": true,
+      "time_non_negative": true,
+      "class_is_binary": true,
+      "all_numeric_features_finite": true,
+      "row_count_matches_expected": true
+    },
+    "all_checks_passed": true,
+    "null_counts_per_column": {},
+    "duplicate_row_count_fresh": 1081,
+    "duplicate_row_rate_fresh": 0.00379555277784605,
+    "duplicate_row_count_nb1_originally_reported": 1081,
+    "duplicate_counts_match_nb1": true,
+    "column_stats": {
+      "Time": {
+        "min": 0.0,
+        "max": 172792.0,
+        "mean": 94813.85957508067,
+        "std": 47488.14595456617
+      },
+      "Amount": {
+        "min": 0.0,
+        "max": 25691.16,
+        "mean": 88.34961925093134,
+        "std": 250.12010924018855
+      }
+    }
+  },
+  "concentration_summary": {
+    "source_file": "C:\\Users\\rnand\\Downloads\\Fraud_Detection_Platform\\Fraud_Detection_Platform_repo_only\\reports\\nb2_results\\concentration_report.csv",
+    "n_segments": 120,
+    "max_false_positive_rate": 0.0036630036630036,
+    "max_false_negative_rate": 0.0,
+    "segment_with_max_fp_rate": {
+      "amount_band": "(-0.001, 3.57]",
+      "hour_of_day": 4
+    }
+  },
+  "bcbs239_mapping": [
+    {
+      "principle_group": "Governance",
+      "status": "evidenced",
+      "evidence": "NB6 real Tier 2 (Moderate materiality -- proportionate, standard oversight); oversight cadence follows NB6's real recommended-next-steps for that tier."
+    },
+    {
+      "principle_group": "Data architecture",
+      "status": "limitation_disclosed",
+      "evidence": "Single anonymized source table (V1-V28 PCA components, Amount, Time, Class) -- no cross-source identifiers or taxonomy exist to integrate at this project's scope. Not fabricated."
+    },
+    {
+      "principle_group": "Accuracy & integrity",
+      "status": "evidenced",
+      "evidence": "NB2 Gate 1 structural checks (real, all_passed=True); this notebook's own real, rerunnable data-quality gate (Section A, all_checks_passed=True)."
+    },
+    {
+      "principle_group": "Completeness",
+      "status": "limitation_disclosed",
+      "evidence": "No business-line/legal-entity/region dimensions exist in this dataset (see Section B). Amount-band x hour-of-day (NB2's real concentration report) is the disclosed substitute."
+    },
+    {
+      "principle_group": "Timeliness",
+      "status": "evidenced",
+      "evidence": "NB3's real append-only monitoring cadence + this notebook's own real append-only data-quality gate -- both designed to be rerun against each new real data batch, aggregation frequency scaling with how often new data arrives."
+    },
+    {
+      "principle_group": "Adaptability",
+      "status": "evidenced",
+      "evidence": "NB6's real retroactive finding (recommending NB3's monitoring tier parameter be updated from its default) is a live, real example of the system adapting to a new governance decision."
+    }
+  ]
+}

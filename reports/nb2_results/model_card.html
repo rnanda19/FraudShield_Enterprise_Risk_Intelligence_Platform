@@ -1,0 +1,34 @@
+<div class='model-card'>
+<h1>Model Card — Fraud Detection Champion (CatBoost)</h1>
+<p>**Version:** fraud-champion-v1.0.0</p>
+<p>**Tier:** 1 (per Master Playbook Section 3)</p>
+<p>**Training data snapshot:** creditcard.csv, 284,807 rows, RANDOM_SEED=42</p>
+<p>**Code commit:** 187e3342532b340ad55cb2c073b80a899dca98d3</p>
+<p>**Generated:** 2026-09-13T16:06:27.419159+00:00</p>
+<h2>Intended Use</h2>
+<p>Real-time, transaction-level fraud-probability scoring for card-not-present and card-present transactions, to prioritize which transactions a fraud-ops team reviews or holds, at the cost-optimal decision threshold computed in Notebook 01.</p>
+<h2>Out-of-Scope Uses</h2>
+<li>Any automated account-closure or customer-blocking decision without human review.</li>
+<li>Any use as a credit, lending, or account-opening decision -- this model is trained only on real-time transaction fraud, not creditworthiness.</li>
+<li>Any demographic or fairness-protected-class decisioning -- the training features are anonymized PCA components (V1-V28); no demographic attributes are available or used.</li>
+<h2>Training Data Provenance</h2>
+<p>Kaggle mlg-ulb/creditcardfraud (Worldline / Universite Libre de Bruxelles), real anonymized European cardholder transactions, September 2013, ~48-hour window, 284,807 transactions, 492 fraud (0.173%).</p>
+<h2>Performance (real, measured)</h2>
+<table>
+<tr><td>Metric</td><td>Value</td></tr>
+<tr><td>CV PR-AUC</td><td>0.8482</td></tr>
+<tr><td>CV PR-AUC 95% bootstrap CI</td><td>[0.8162, 0.8784]</td></tr>
+<tr><td>Temporal-split PR-AUC</td><td>0.7692</td></tr>
+<tr><td>Precision @ operating threshold (0.0443)</td><td>0.6951</td></tr>
+<tr><td>Recall @ operating threshold</td><td>0.8293</td></tr>
+</table>
+<h2>External Benchmark Comparison (Section 19.4)</h2>
+<p>{'your_precision': 0.6950596252129472, 'reference_precision': 0.9333, 'precision_gap': -0.23824037478705284, 'your_recall': 0.8292682926829268, 'reference_recall': 0.7467, 'recall_gap': 0.08256829268292676, 'investigate_flag': True, 'note': 'Large positive gaps may indicate leakage; large negative gaps may indicate a bug — investigate before trusting either.'}</p>
+<h2>Known Limitations</h2>
+<li>Anonymized PCA features (V1-V28) make demographic fairness auditing impossible on this dataset -- disclosed per Section 8/18, not silently omitted.</li>
+<li>Only a ~48-hour data window exists; the drift-monitoring baseline above uses an early-vs-late proxy, not genuine multi-period production history (Section 9).</li>
+<li>Adversarial robustness (Section 19): 3 of 492 currently-caught fraud cases (0.61%) were evadable within a 90% amount-cut budget -- see the adversarial robustness section above for the real, measured numbers.</li>
+<li>Gate 2 stress-test multipliers (2x volume, 3x fraud rate) are stated ASSUMPTIONs for a documented hypothetical shock, not a fitted or historically-calibrated scenario.</li>
+<h2>Monitoring Plan</h2>
+<p>See Master Playbook Section 9</p>
+</div>

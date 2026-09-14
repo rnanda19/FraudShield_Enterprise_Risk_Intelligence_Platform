@@ -1,0 +1,40 @@
+name: CI
+
+on:
+  push:
+    branches: [master, main]
+  pull_request:
+    branches: [master, main]
+
+jobs:
+  notebook-syntax:
+    name: Notebook syntax check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install nbformat
+      - run: python scripts/check_notebook_syntax.py
+
+  smoke-tests:
+    name: Code-correctness smoke tests (synthetic data only)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install -r requirements.txt
+      - run: pip install pytest httpx
+      - name: src/ module smoke test
+        working-directory: tests
+        run: |
+          cp ../src/*.py .
+          python _smoke_test.py
+      - name: FastAPI service smoke test
+        working-directory: tests
+        run: |
+          cp ../deployment/app.py .
+          pytest test_app_smoke.py -v

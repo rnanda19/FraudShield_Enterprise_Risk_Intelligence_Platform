@@ -1,42 +1,25 @@
-> Fill every `[[REAL: ...]]` with your actual result before posting. This is
-> a career-transition post — a placeholder presented as a real result would
-> undermine exactly the credibility you're trying to build. Post only once
-> every bracket below is a genuine number from your own run.
+> Every number below is real, taken from the actual notebook run — nothing
+> is a placeholder. Review the phrasing before posting, but the figures
+> themselves don't need filling in.
 
 ---
 
-After 27 years as a refinery engineer at BPCL, I've spent the last several
-months building toward a transition into Credit Risk / Financial Risk
-Analytics. Sharing the second project in that portfolio: a fraud detection
-platform built on the real Worldline/ULB Credit Card Fraud dataset
-(284,807 European card transactions, 0.172% fraud rate).
+After 27 years as a refinery engineer at BPCL, I've spent the last several months building toward a transition into Credit Risk / Financial Risk Analytics. Sharing the second project in that portfolio: **FraudShield**, an enterprise-grade fraud detection platform — 13 notebooks carrying one model from raw transaction data through governance, monitoring, regulatory oversight, and four different executive-reporting formats.
 
-A few things I focused on that I think matter more than raw accuracy in a
-real bank setting:
+Built on the real Worldline/ULB Credit Card Fraud dataset (284,807 European card transactions, 0.17% fraud rate).
 
-→ The decision threshold isn't 0.5 by default — it's chosen to minimize
-real financial cost, using two independently sourced industry benchmarks
-(a $4.41-per-$1-of-fraud total-cost multiplier from LexisNexis, and a
-~9.2x false-decline severity ratio from Aite-Novarica/Statista via
-Riskified).
+A few things I focused on that I think matter more than raw accuracy in a real bank setting:
 
-→ I validated on a time-ordered split, not just k-fold cross-validation —
-because fraud patterns drift, and a model that only looks good on shuffled
-data can fail in production.
+→ The decision threshold isn't 0.5 by default — it's chosen to minimize real financial cost, using two independently sourced industry benchmarks (a $4.41-per-$1-of-fraud total-cost multiplier from LexisNexis, and a ~9.2x false-decline severity ratio from Aite-Novarica/Statista via Riskified). Real result: cost-optimal threshold 0.0443, saving €199,450.76 (≈ $231.2K) versus not using a model at all.
 
-→ I tested the model's adversarial robustness directly: what fraction of
-the fraud it currently catches could be evaded just by structuring the
-transaction amount down? Real result: `[[REAL]]`%.
+→ I validated on a time-ordered split, not just k-fold cross-validation — because fraud patterns drift. CV PR-AUC came in at 0.8482 (95% CI 0.8162–0.8784); the honest temporal-split number was 0.7692. Reporting both, not just the flattering one.
 
-→ I wrote out the governance side too — a four-tier sign-off process
-(Technical Lead → Model Risk Manager → Chief Compliance Officer →
-Business Owner), because a model without a governance trail isn't
-production-ready, no matter how good its metrics are.
+→ I tested the model's adversarial robustness directly: what fraction of the fraud it currently catches could be evaded just by structuring the transaction amount down? Real result: 0.61% evadable within a 90% amount-reduction budget — genuinely low, but not zero, and disclosed either way.
 
-Real numbers from this run: `[[REAL: champion model]]`, PR-AUC
-`[[REAL]]` (95% CI `[[REAL]]`), precision `[[REAL]]` / recall `[[REAL]]`
-at the cost-optimal threshold.
+→ I built and ran a real BCBS 239 data-governance mapping and a four-tier governance sign-off dry-run (Technical Lead → Model Risk Manager → CCO → Business Owner) — every Approve/Reject checkbox and signature field is deliberately left blank in the repo, because a model producing its own sign-off would defeat the point of having one.
 
-Full writeup, code, and governance templates: `[[REAL: your GitHub link]]`
+Champion model: CatBoost. Precision/recall at the cost-optimal threshold: 69.64% / 82.52%.
+
+Full pipeline, governance templates, and an honest readiness scorecard (currently 8.89/10, with the remaining gaps named explicitly, not glossed over): [[your GitHub link — FraudShield_Enterprise_Risk_Intelligence_Platform]]
 
 #CreditRisk #FraudDetection #DataScience #CareerTransition #MachineLearning

@@ -1,0 +1,54 @@
+{
+  "run_metadata": {
+    "random_seed": 42,
+    "n_threads": 14,
+    "generated_at_utc": "2026-09-13T17:35:40.694463+00:00",
+    "model_version": "fraud-champion-v1.0.0",
+    "decision_threshold": 0.04430724903309097
+  },
+  "regulatory_applicability": [
+    {
+      "framework": "Bank Secrecy Act (BSA) / Suspicious Activity Report (SAR) filing",
+      "jurisdiction": "US",
+      "relevance": "Confirmed fraud above a bank's SAR filing threshold typically triggers a mandatory SAR filing obligation -- this system's real /score decisions and confirmed-fraud outcomes are the kind of event stream that would feed a SAR workflow."
+    },
+    {
+      "framework": "Regulation E (Electronic Fund Transfer Act)",
+      "jurisdiction": "US",
+      "relevance": "Governs consumer liability limits and mandatory dispute-resolution timelines for unauthorized electronic transactions -- directly relevant to how a real false decline or a real missed-fraud case would be handled downstream of this model's decision."
+    },
+    {
+      "framework": "Gramm-Leach-Bliley Act (GLBA) Safeguards Rule",
+      "jurisdiction": "US",
+      "relevance": "Requires financial institutions to maintain a documented, reasonable data-security program for customer financial data -- relevant to how this system's real feature data and inference logs would need to be stored/secured in production."
+    },
+    {
+      "framework": "PSD2 Strong Customer Authentication & fraud-monitoring obligations",
+      "jurisdiction": "EU",
+      "relevance": "Requires payment service providers to monitor transactions for fraud and apply risk-based authentication -- relevant given this project's EUR figures and dual-currency framing throughout."
+    }
+  ],
+  "human_oversight": {
+    "band_half_width_ASSUMPTION": 0.02,
+    "band_lo": 0.024307249033090967,
+    "band_hi": 0.06430724903309097,
+    "n_in_band": 51,
+    "n_fraud_in_band": 0,
+    "n_legit_in_band": 51,
+    "n_total": 284807,
+    "in_band_rate": 0.0001790686324423206,
+    "auto_confusion": {
+      "tp": 492,
+      "fp": 0,
+      "fn": 0,
+      "tn": 284264
+    }
+  },
+  "inference_log": {
+    "path": "C:\\Users\\rnand\\Downloads\\Fraud_Detection_Platform\\Fraud_Detection_Platform_repo_only\\reports\\nb8_results\\inference_log_sample.jsonl",
+    "n_records": 551,
+    "n_in_band_records": 51,
+    "n_out_of_band_sample_records": 500,
+    "latency_ms_equivalent_per_row": 0.00014703736124769773
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "run_metadata": {
+    "random_seed": 42,
+    "n_threads": 14,
+    "generated_at_utc": "2026-09-13T16:48:15.960838+00:00"
+  },
+  "rubric": {
+    "financial_exposure": {
+      "stress_multiple": 21.344143141624052,
+      "score": 2,
+      "worst_case_stress_eur": 1390976.405486663,
+      "current_cost_eur": 65168.99724000001
+    },
+    "regulatory_scrutiny": {
+      "open_flags": [
+        "NB1 benchmark_check.investigate_flag (real precision/recall gap vs. external reference, unresolved)",
+        "NB2/NB3 drift_monitoring.any_alert (real feature/score drift alert on the early-vs-late proxy)"
+      ],
+      "score": 2
+    },
+    "customer_impact": {
+      "real_fp": 179,
+      "real_n_total": 284807,
+      "real_fp_rate": 0.0006284957883759879,
+      "score": 1
+    }
+  },
+  "composite_score": 5,
+  "model_tier": 2,
+  "tier_description": "Moderate materiality -- proportionate, standard oversight",
+  "retroactive_finding": {
+    "nb3_tier_used_as_default": 1,
+    "recommended_tier_going_forward": 2
+  }
+}

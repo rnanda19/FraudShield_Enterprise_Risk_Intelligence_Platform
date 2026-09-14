@@ -1,0 +1,35 @@
+{
+  "run_metadata": {
+    "random_seed": 42,
+    "n_threads": 14,
+    "model_version": "fraud-champion-v1.0.0",
+    "decision_threshold": 0.04430724903309097
+  },
+  "health_check_passed": true,
+  "model_info_check_passed": true,
+  "training_serving_consistency": {
+    "n_rows_tested": 500,
+    "n_fraud_sampled": 250,
+    "n_legit_sampled": 250,
+    "max_abs_diff": 0.0,
+    "mean_abs_diff": 0.0,
+    "tolerance": 0.001,
+    "passed": true,
+    "loop_wall_clock_seconds": 1.6628
+  },
+  "latency_sla_ms": {
+    "note": "In-process FastAPI TestClient -- real app/serialization overhead, NOT real network transport time.",
+    "server_reported": {
+      "p50": 0.503,
+      "p95": 0.821,
+      "p99": 0.9696299999999994,
+      "mean": 0.550856
+    },
+    "client_round_trip": {
+      "p50": 3.0202999769244343,
+      "p95": 4.185135025181808,
+      "p99": 5.099934007739648,
+      "mean": 3.1472031995654106
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "run_metadata": {
+    "random_seed": 42,
+    "n_threads": 14,
+    "generated_at_utc": "2026-09-13T17:38:44.297010+00:00"
+  },
+  "outputs": {
+    "pdf": "C:\\Users\\rnand\\Downloads\\Fraud_Detection_Platform\\Fraud_Detection_Platform_repo_only\\reports\\nb11_results\\Fraud_Detection_Executive_Rollup_Report.pdf",
+    "pptx": "C:\\Users\\rnand\\Downloads\\Fraud_Detection_Platform\\Fraud_Detection_Platform_repo_only\\reports\\nb11_results\\Fraud_Detection_Executive_Rollup_Deck.pptx",
+    "xlsx": "C:\\Users\\rnand\\Downloads\\Fraud_Detection_Platform\\Fraud_Detection_Platform_repo_only\\reports\\nb11_results\\Fraud_Detection_Executive_Rollup_Scorecard.xlsx"
+  },
+  "role_decisions_count": 8,
+  "role_decisions_status_counts": {
+    "Go": 3,
+    "Conditional": 5,
+    "Hold": 0
+  }
+}

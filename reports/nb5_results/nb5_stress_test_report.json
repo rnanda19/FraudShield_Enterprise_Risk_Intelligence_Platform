@@ -1,0 +1,187 @@
+{
+  "run_metadata": {
+    "random_seed": 42,
+    "n_threads": 14,
+    "chosen_threshold": 0.04430724903309097,
+    "base_fraud_rate": 0.001727485630620034,
+    "eur_to_usd_rate": 1.1592,
+    "eur_to_usd_source": "ECB euro foreign exchange reference rate, 2026-09-11 fixing",
+    "fn_cost_per_dollar_lost": 4.41,
+    "fn_cost_source": "LexisNexis True Cost of Fraud multiplier",
+    "fp_cost_multiplier_pct": 9.2,
+    "fp_cost_source": "Aite-Novarica/Statista via Riskified"
+  },
+  "scenario_ladder": [
+    {
+      "ASSUMPTION_scenario_volume_multiplier": 1.0,
+      "ASSUMPTION_scenario_fraud_rate_multiplier": 1.0,
+      "base_fraud_rate_real": 0.001727485630620034,
+      "projected_fraud_rate_under_scenario": 0.001727485630620034,
+      "projected_transaction_count": 284807.0,
+      "projected_fraud_loss_usd_or_eur": 43468.01267145822,
+      "tier_name": "baseline",
+      "tier_note": "Today's real observed volume and fraud rate -- no shock applied.",
+      "projected_fraud_loss_usd": 50388.12028875437
+    },
+    {
+      "ASSUMPTION_scenario_volume_multiplier": 2.0,
+      "ASSUMPTION_scenario_fraud_rate_multiplier": 3.0,
+      "base_fraud_rate_real": 0.001727485630620034,
+      "projected_fraud_rate_under_scenario": 0.005182456891860102,
+      "projected_transaction_count": 569614.0,
+      "projected_fraud_loss_usd_or_eur": 260808.07602874932,
+      "tier_name": "moderate",
+      "tier_note": "Same disclosed ASSUMPTION multipliers NB2 used, kept unchanged here for direct comparability across notebooks.",
+      "projected_fraud_loss_usd": 302328.7217325262
+    },
+    {
+      "ASSUMPTION_scenario_volume_multiplier": 3.0,
+      "ASSUMPTION_scenario_fraud_rate_multiplier": 6.0,
+      "base_fraud_rate_real": 0.001727485630620034,
+      "projected_fraud_rate_under_scenario": 0.010364913783720203,
+      "projected_transaction_count": 854421.0,
+      "projected_fraud_loss_usd_or_eur": 782424.2280862479,
+      "tier_name": "severe",
+      "tier_note": "New, deeper ASSUMPTION tier added in NB5. Loosely informed by -- NOT literally derived from -- the severity ranking of the Federal Reserve's 2026 CCAR severely-adverse macro scenario already cited in this project's own gap-analysis doc (unemployment +5.5pp to 10% by Q3 2027, BBB corporate spread +4.4pp, CRE -40%). No published, verified model exists mapping those specific macro variables to a card-fraud volume/rate multiplier at this portfolio-project's scope, so this stays a clearly labeled ASSUMPTION, never presented as a citation-backed figure.",
+      "projected_fraud_loss_usd": 906986.1651975786
+    }
+  ],
+  "grid_sweep": {
+    "volume_multipliers": [
+      1.0,
+      1.5,
+      2.0,
+      2.5,
+      3.0,
+      3.5,
+      4.0
+    ],
+    "fraud_rate_multipliers": [
+      1.0,
+      1.5,
+      2.0,
+      2.5,
+      3.0,
+      3.5,
+      4.0,
+      4.5,
+      5.0,
+      5.5,
+      6.0,
+      6.5,
+      7.0,
+      7.5,
+      8.0
+    ],
+    "n_combinations": 105,
+    "grid_compute_seconds": 0.000392,
+    "cross_check_vs_module_passed": true,
+    "worst_combination": {
+      "volume_multiplier": 4.0,
+      "fraud_rate_multiplier": 8.0,
+      "projected_loss_eur": 1390976.405486663,
+      "projected_loss_usd": 1612419.8492401398
+    }
+  },
+  "reverse_stress_test": {
+    "volume_held_at": 1.0,
+    "search_range_fraud_multiplier": [
+      1.0,
+      30.0
+    ],
+    "search_step": 0.01,
+    "search_compute_seconds": 9.7e-05,
+    "results": [
+      {
+        "target_multiple_of_current_cost": 2,
+        "target_cost_eur": 130337.99448000002,
+        "required_fraud_rate_multiplier": 3.0000000000000018,
+        "required_fraud_rate": 0.005182456891860105,
+        "reached_within_tested_range": true
+      },
+      {
+        "target_multiple_of_current_cost": 3,
+        "target_cost_eur": 195506.99172000005,
+        "required_fraud_rate_multiplier": 4.5000000000000036,
+        "required_fraud_rate": 0.007773685337790159,
+        "reached_within_tested_range": true
+      },
+      {
+        "target_multiple_of_current_cost": 5,
+        "target_cost_eur": 325844.98620000004,
+        "required_fraud_rate_multiplier": 7.500000000000005,
+        "required_fraud_rate": 0.012956142229650264,
+        "reached_within_tested_range": true
+      },
+      {
+        "target_multiple_of_current_cost": 10,
+        "target_cost_eur": 651689.9724000001,
+        "required_fraud_rate_multiplier": 15.000000000000012,
+        "required_fraud_rate": 0.025912284459300532,
+        "reached_within_tested_range": true
+      }
+    ]
+  },
+  "model_based_rescoring_under_amount_shock": {
+    "caveat": "In-sample scoring (same disclosed limitation as NB2's adversarial-robustness section) -- directional sensitivity signal, not a replacement for NB1's real out-of-fold headline metrics.",
+    "compute_seconds": 0.2109,
+    "results": [
+      {
+        "amount_shock_pct": 0.0,
+        "tp": 492,
+        "fp": 12,
+        "fn": 0,
+        "tn": 284303,
+        "precision": 0.9761904761904762,
+        "recall": 1.0,
+        "fn_cost_eur": 0.0,
+        "fp_cost_eur": 80.24883999999999,
+        "total_cost_eur": 80.24883999999999,
+        "total_cost_usd": 93.02445532799999,
+        "delta_cost_vs_shock0_eur": 0.0
+      },
+      {
+        "amount_shock_pct": 0.1,
+        "tp": 492,
+        "fp": 37,
+        "fn": 0,
+        "tn": 284278,
+        "precision": 0.9300567107750473,
+        "recall": 1.0,
+        "fn_cost_eur": 0.0,
+        "fp_cost_eur": 334.14620799999994,
+        "total_cost_eur": 334.14620799999994,
+        "total_cost_usd": 387.3422843135999,
+        "delta_cost_vs_shock0_eur": 253.89736799999997
+      },
+      {
+        "amount_shock_pct": 0.25,
+        "tp": 492,
+        "fp": 38,
+        "fn": 0,
+        "tn": 284277,
+        "precision": 0.9283018867924528,
+        "recall": 1.0,
+        "fn_cost_eur": 0.0,
+        "fp_cost_eur": 368.93379999999996,
+        "total_cost_eur": 368.93379999999996,
+        "total_cost_usd": 427.66806095999993,
+        "delta_cost_vs_shock0_eur": 288.68496
+      },
+      {
+        "amount_shock_pct": 0.5,
+        "tp": 491,
+        "fp": 46,
+        "fn": 1,
+        "tn": 284269,
+        "precision": 0.9143389199255121,
+        "recall": 0.9979674796747967,
+        "fn_cost_eur": 7.805700000000001,
+        "fp_cost_eur": 492.3770999999999,
+        "total_cost_eur": 500.18279999999993,
+        "total_cost_usd": 579.81190176,
+        "delta_cost_vs_shock0_eur": 419.93395999999996
+      }
+    ]
+  }
+}

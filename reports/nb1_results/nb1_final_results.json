@@ -2,7 +2,7 @@
   "run_metadata": {
     "random_seed": 42,
     "n_rows": 284807,
-    "n_threads": 1
+    "n_threads": 14
   },
   "dataset": {
     "rows": 284807,
@@ -19,8 +19,8 @@
   },
   "imbalance_comparison": {
     "class_weighting": {
-      "mean_pr_auc": 0.8326799369838532,
-      "std_pr_auc": 0.0277526488733523
+      "mean_pr_auc": 0.8366035366815383,
+      "std_pr_auc": 0.023817942349947236
     },
     "threshold_moving": {
       "mean_pr_auc": 0.8448213812006662,
@@ -43,15 +43,15 @@
     },
     {
       "model": "RandomForest_Balanced",
-      "val_pr_auc": 0.8272676620161743
+      "val_pr_auc": 0.8440348018240171
     },
     {
       "model": "XGBoost",
-      "val_pr_auc": 0.7894425223845876
+      "val_pr_auc": 0.797341737032014
     },
     {
       "model": "LightGBM",
-      "val_pr_auc": 0.3583608068137317
+      "val_pr_auc": 0.0017204452090867595
     }
   ],
   "stage_b": {
@@ -89,46 +89,53 @@
   "temporal_pr_auc": 0.7691969987866822,
   "threshold_result": {
     "threshold": 0.04430724903309097,
-    "total_cost": 65713.59124000002,
-    "fn_cost": 61408.720800000025,
-    "fp_cost": 4304.870439999996
+    "total_cost": 65168.99724000001,
+    "fn_cost": 61394.52060000002,
+    "fp_cost": 3774.476639999996
   },
-  "real_precision": 0.6963979416809606,
-  "real_recall": 0.8252032520325203,
+  "real_precision": 0.6950596252129472,
+  "real_recall": 0.8292682926829268,
   "benchmark_check": {
-    "your_precision": 0.6963979416809606,
+    "your_precision": 0.6950596252129472,
     "reference_precision": 0.9333,
-    "precision_gap": -0.23690205831903943,
-    "your_recall": 0.8252032520325203,
+    "precision_gap": -0.23824037478705284,
+    "your_recall": 0.8292682926829268,
     "reference_recall": 0.7467,
-    "recall_gap": 0.07850325203252029,
+    "recall_gap": 0.08256829268292676,
     "investigate_flag": true,
     "note": "Large positive gaps may indicate leakage; large negative gaps may indicate a bug \u2014 investigate before trusting either."
   },
   "confusion_matrix": [
     [
-      284138,
-      177
+      284136,
+      179
     ],
     [
-      86,
-      406
+      84,
+      408
     ]
   ],
   "financial_impact": [
     {
       "Scenario": "No model (flag nothing)",
-      "Total Cost (EUR)": 265164.34770000004
+      "Total Cost (EUR)": 265164.34770000004,
+      "Total Cost (USD)": 307378.51185384
     },
     {
       "Scenario": "Naive 0.5 threshold",
-      "Total Cost (EUR)": 73126.85946
+      "Total Cost (EUR)": 73034.07306000001,
+      "Total Cost (USD)": 84661.09749115202
     },
     {
       "Scenario": "Cost-optimal threshold (0.0443)",
-      "Total Cost (EUR)": 65713.59124000002
+      "Total Cost (EUR)": 65168.99724000001,
+      "Total Cost (USD)": 75543.90160060802
     }
   ],
-  "savings_vs_no_model": 199450.75646,
-  "savings_vs_naive_05": 7413.268219999984
+  "eur_to_usd_rate": 1.1592,
+  "eur_to_usd_source": "ECB euro foreign exchange reference rate, 2026-09-11 fixing (https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/eurofxref-graph-usd.en.html)",
+  "savings_vs_no_model": 199995.35046000005,
+  "savings_vs_naive_05": 7865.075819999998,
+  "savings_vs_no_model_usd": 231834.61025323207,
+  "savings_vs_naive_05_usd": 9117.195890543999
 }

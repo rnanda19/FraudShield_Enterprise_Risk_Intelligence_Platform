@@ -18,3 +18,12 @@ fastapi==0.141.1
 uvicorn==0.46.0
 pydantic==2.13.3
 requests==2.33.1
+polars==1.44.2
+psutil==7.2.2
+pyarrow==25.0.1
+httpx==0.28.1
+
+# Added for NB11 (executive rollup reports: PDF / PPTX / XLSX)
+reportlab==4.4.10
+python-pptx==1.0.2
+openpyxl==3.1.5

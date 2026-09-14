@@ -1,0 +1,24 @@
+{
+  "run_metadata": {
+    "random_seed": 42,
+    "n_threads": 14,
+    "generated_at_utc": "2026-09-13T17:36:27.399515+00:00"
+  },
+  "sections_included": 11,
+  "sources": [
+    "nb1",
+    "nb2",
+    "nb3_drift_history",
+    "nb4",
+    "nb5",
+    "nb6",
+    "nb7",
+    "nb8",
+    "nb9"
+  ],
+  "html_bytes": 699239,
+  "output_paths": [
+    "C:\\Users\\rnand\\Downloads\\Fraud_Detection_Platform\\Fraud_Detection_Platform_repo_only\\reports\\Fraud_Detection_Command_Center.html",
+    "C:\\Users\\rnand\\Downloads\\Fraud_Detection_Platform\\Fraud_Detection_Platform_repo_only\\reports\\nb10_results\\Fraud_Detection_Command_Center.html"
+  ]
+}
