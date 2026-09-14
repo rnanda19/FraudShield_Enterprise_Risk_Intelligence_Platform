@@ -7,7 +7,7 @@
 
 [![CI](https://github.com/rnanda19/FraudShield_Enterprise_Risk_Intelligence_Platform/actions/workflows/ci.yml/badge.svg)](https://github.com/rnanda19/FraudShield_Enterprise_Risk_Intelligence_Platform/actions/workflows/ci.yml)
 [![Python 3.11+](https://img.shields.io/badge/python-3.11%2B-blue)](requirements.txt)
-[![License: MIT](https://img.shields.io/badge/license-MIT-informational)](LICENSE)
+[![License: All Rights Reserved](https://img.shields.io/badge/license-All%20Rights%20Reserved-informational)](LICENSE)
 [![Zero Fabrication](https://img.shields.io/badge/policy-zero--fabrication-blueviolet)](#-what-this-is--and-isnt)
 [![Notebooks](https://img.shields.io/badge/real%20notebooks-13-success)](#-notebook-index)
 [![Readiness Score](https://img.shields.io/badge/honest%20readiness-8.89%2F10-yellow)](docs/readiness_score_report.md)
