@@ -7,7 +7,7 @@ scikit-learn==1.8.0
 xgboost==3.2.0
 lightgbm==4.7.0
 catboost==1.2.10
-matplotlib==3.10.9
+matplotlib==3.11.1
 seaborn==0.13.2
 shap==0.51.0
 imbalanced-learn==0.14.2
