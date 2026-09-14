@@ -14,5 +14,10 @@ Thumbs.db
 # committed copy under reports/nb1_results/ is the real, already-executed one)
 notebooks/nb1_results/
 
-# NOTE: data/raw/creditcard.csv is intentionally NOT ignored — the raw dataset
-# is tracked in this repo. See README.md's Git LFS note before pushing.
+# The real 98MB raw dataset is NOT tracked in this repo (GitHub hard-blocks
+# pushes over 100MB and warns at 50MB) — data/raw/README_DOWNLOAD_CSV.md has
+# download instructions instead. If you want it tracked in git history, set
+# up Git LFS first (see README.md's Git LFS note), THEN remove this ignore
+# line — committing it un-tracked risks a rejected push or a bloated repo.
+data/raw/creditcard.csv
+data/raw/*.csv
