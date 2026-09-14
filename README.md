@@ -12,7 +12,15 @@
 [![Notebooks](https://img.shields.io/badge/real%20notebooks-13-success)](#-notebook-index)
 [![Readiness Score](https://img.shields.io/badge/honest%20readiness-8.89%2F10-yellow)](docs/readiness_score_report.md)
 
+**[⚡ Why it's different](#-why-this-repo-is-different)** · **[📊 Real results](#-real-headline-results)** · **[📌 What this is](#-what-this-is--and-isnt)** · **[🧭 Notebooks](#-notebook-index)** · **[📑 Reports](#-executive-reporting-outputs)** · **[🚀 Quickstart](#-quickstart)** · **[🗂️ Layout](#-repository-layout)** · **[🧱 Rules](#-standing-project-rules)**
+
 </div>
+
+<br>
+
+> ### 🔎 See it in 60 seconds
+> No install needed — three real, already-generated artifacts:
+> **[System architecture diagram](FraudShield_System_Architecture.svg)** (this page, below) · **[Executive PDF report](reports/nb11_results/Fraud_Detection_Executive_Rollup_Report.pdf)** (renders inline on GitHub) · **[World-Class interactive dashboard](https://rnanda19.github.io/FraudShield_Enterprise_Risk_Intelligence_Platform/reports/nb13_results/Fraud_Detection_WorldClass_Dashboard.html)** (live, served via GitHub Pages)
 
 <br>
 
@@ -97,10 +105,10 @@ Four independent, already-generated report formats — every one auto-populated 
 | 🖥️ PowerPoint | [`Fraud_Detection_Executive_Rollup_Deck.pptx`](reports/nb11_results/Fraud_Detection_Executive_Rollup_Deck.pptx) | NB11 |
 | 📊 Excel (live formulas) | [`Fraud_Detection_Executive_Rollup_Scorecard.xlsx`](reports/nb11_results/Fraud_Detection_Executive_Rollup_Scorecard.xlsx) | NB11 |
 | 📝 Word | [`Fraud_Detection_Ultimate_Executive_Report.docx`](reports/nb12_results/Fraud_Detection_Ultimate_Executive_Report.docx) | NB12 |
-| 🌐 HTML dashboard (Command Center) | [`Fraud_Detection_Command_Center.html`](reports/nb10_results/Fraud_Detection_Command_Center.html) | NB10 |
-| 🌐 HTML dashboard (World-Class Edition) | [`Fraud_Detection_WorldClass_Dashboard.html`](reports/nb13_results/Fraud_Detection_WorldClass_Dashboard.html) | NB13 |
+| 🌐 HTML dashboard (Command Center) | **[Live ↗](https://rnanda19.github.io/FraudShield_Enterprise_Risk_Intelligence_Platform/reports/nb10_results/Fraud_Detection_Command_Center.html)** · [source](reports/nb10_results/Fraud_Detection_Command_Center.html) | NB10 |
+| 🌐 HTML dashboard (World-Class Edition) | **[Live ↗](https://rnanda19.github.io/FraudShield_Enterprise_Risk_Intelligence_Platform/reports/nb13_results/Fraud_Detection_WorldClass_Dashboard.html)** · [source](reports/nb13_results/Fraud_Detection_WorldClass_Dashboard.html) | NB13 |
 
-GitHub renders `.pdf` inline and previews `.html` as raw markup — download the file (⋯ menu → Download) for the PDF viewer or the `.pptx`/`.xlsx` files, and open an `.html` file locally in a browser to see it rendered as designed.
+Both dashboards are served live via GitHub Pages — click "Live" to see them fully rendered, interactive, no download needed. GitHub renders `.pdf` inline in-browser; the `.pptx`/`.xlsx` files need a download (⋯ menu → Download) since GitHub has no native previewer for those formats.
 
 <br>
 
