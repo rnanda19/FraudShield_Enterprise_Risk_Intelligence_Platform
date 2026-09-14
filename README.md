@@ -87,6 +87,23 @@ Each notebook is self-contained (one markdown intro + one code cell) and safe to
 
 <br>
 
+## 📑 Executive reporting outputs
+
+Four independent, already-generated report formats — every one auto-populated from NB1–NB9's real on-disk results, none hand-written:
+
+| Format | File | Produced by |
+|---|---|---|
+| 📄 PDF | [`Fraud_Detection_Executive_Rollup_Report.pdf`](reports/nb11_results/Fraud_Detection_Executive_Rollup_Report.pdf) | NB11 |
+| 🖥️ PowerPoint | [`Fraud_Detection_Executive_Rollup_Deck.pptx`](reports/nb11_results/Fraud_Detection_Executive_Rollup_Deck.pptx) | NB11 |
+| 📊 Excel (live formulas) | [`Fraud_Detection_Executive_Rollup_Scorecard.xlsx`](reports/nb11_results/Fraud_Detection_Executive_Rollup_Scorecard.xlsx) | NB11 |
+| 📝 Word | [`Fraud_Detection_Ultimate_Executive_Report.docx`](reports/nb12_results/Fraud_Detection_Ultimate_Executive_Report.docx) | NB12 |
+| 🌐 HTML dashboard (Command Center) | [`Fraud_Detection_Command_Center.html`](reports/nb10_results/Fraud_Detection_Command_Center.html) | NB10 |
+| 🌐 HTML dashboard (World-Class Edition) | [`Fraud_Detection_WorldClass_Dashboard.html`](reports/nb13_results/Fraud_Detection_WorldClass_Dashboard.html) | NB13 |
+
+GitHub renders `.pdf` inline and previews `.html` as raw markup — download the file (⋯ menu → Download) for the PDF viewer or the `.pptx`/`.xlsx` files, and open an `.html` file locally in a browser to see it rendered as designed.
+
+<br>
+
 ## 🚀 Quickstart
 
 ```bash
