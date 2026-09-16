@@ -25,6 +25,6 @@ This goes beyond a standard classification exercise on the Credit Card Fraud Det
 
 The dataset's V1–V28 features are PCA-anonymized, so no protected-attribute fairness audit is possible here — only Amount-band / time-of-day equity checks are shown. This is disclosed, not hidden. The full platform (governance tiering, BCBS 239 mapping, regulatory/inference-logging disclosure, and a four-tier sign-off dry-run with every human decision field deliberately left blank) is in the companion GitHub repo, linked below.
 
-Full repo: `[[your GitHub link — FraudShield_Enterprise_Risk_Intelligence_Platform]]`
+Full repo: `https://github.com/rnanda19/FraudShield_Enterprise_Risk_Intelligence_Platform`
 
 **Upvote if you find the cost-aware thresholding or the adversarial robustness test useful — happy to answer questions in the comments.**

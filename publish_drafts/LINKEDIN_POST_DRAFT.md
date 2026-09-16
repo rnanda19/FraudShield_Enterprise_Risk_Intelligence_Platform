@@ -20,6 +20,6 @@ A few things I focused on that I think matter more than raw accuracy in a real b
 
 Champion model: CatBoost. Precision/recall at the cost-optimal threshold: 69.64% / 82.52%.
 
-Full pipeline, governance templates, and an honest readiness scorecard (currently 8.89/10, with the remaining gaps named explicitly, not glossed over): [[your GitHub link — FraudShield_Enterprise_Risk_Intelligence_Platform]]
+Full pipeline, governance templates, and an honest readiness scorecard (currently 8.89/10, with the remaining gaps named explicitly, not glossed over): https://github.com/rnanda19/FraudShield_Enterprise_Risk_Intelligence_Platform
 
 #CreditRisk #FraudDetection #DataScience #CareerTransition #MachineLearning
