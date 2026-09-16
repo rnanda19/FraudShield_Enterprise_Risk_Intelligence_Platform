@@ -16,13 +16,21 @@ RUN pip install --no-cache-dir -r requirements-api.txt
 
 COPY app.py .
 
+# Real trained champion model (CatBoost, Notebook 1's Stage-B 5-fold CV winner,
+# reports/nb1_results/champion_model.pkl) baked into the image so the
+# container is self-contained on a platform (e.g. Render) that cannot bind-
+# mount a host volume at deploy time. Local docker-compose still overrides
+# this via its own ./model:/app/model:ro mount for iterating on a newer
+# model without rebuilding the image.
+COPY model/ /app/model/
+
 RUN useradd --create-home --shell /bin/bash apiuser \
     && chown -R apiuser:apiuser /app
 USER apiuser
 
 ENV MODEL_PATH=/app/model/champion_model.pkl \
-    MODEL_VERSION=unset-version \
-    DECISION_THRESHOLD=0.5
+    MODEL_VERSION=fraudshield-catboost-v1.0.0 \
+    DECISION_THRESHOLD=0.0443
 
 EXPOSE 8000
 

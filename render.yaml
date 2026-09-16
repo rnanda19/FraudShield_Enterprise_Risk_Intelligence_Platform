@@ -1,0 +1,24 @@
+# Render Blueprint for FraudShield's real-time scoring API.
+# Builds deployment/Dockerfile with build context deployment/ (matches the
+# same Dockerfile CI already verifies via docker-build-verify.yml), so this
+# deploys the exact image that's already been build- and smoke-tested --
+# nothing Render-specific is invented here.
+#
+# Deploy: https://dashboard.render.com/blueprints -> New Blueprint Instance
+# -> connect this GitHub repo -> Render finds this file automatically.
+
+services:
+  - type: web
+    name: fraudshield-scoring-api
+    runtime: docker
+    dockerfilePath: ./deployment/Dockerfile
+    dockerContext: ./deployment
+    plan: free
+    healthCheckPath: /health
+    envVars:
+      - key: MODEL_PATH
+        value: /app/model/champion_model.pkl
+      - key: MODEL_VERSION
+        value: fraudshield-catboost-v1.0.0
+      - key: DECISION_THRESHOLD
+        value: "0.0443"
